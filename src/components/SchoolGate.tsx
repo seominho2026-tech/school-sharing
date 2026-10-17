@@ -7,6 +7,7 @@
    파이어베이스 설정이 없으면 문지기 없이 읽기 전용으로 열립니다. */
 
 import { createContext, useContext, useEffect, useState } from "react";
+import { SCHOOL } from "@/config/school";
 import InstallButton from "@/components/InstallButton";
 import {
   OWNER_EMAIL,
@@ -119,7 +120,7 @@ export default function SchoolGate({ children }: { children: React.ReactNode }) 
   return (
     <div className="sg-root">
       <div className="sg-card">
-        <h1 className="sg-title">우리학교 부별공유</h1>
+        <h1 className="sg-title">{SCHOOL.name} {SCHOOL.siteName}</h1>
         <p className="sg-copy">
           학교에서 받은 구글 계정으로 로그인해야 볼 수 있습니다.
           {SCHOOL_DOMAINS.length > 0 ? (

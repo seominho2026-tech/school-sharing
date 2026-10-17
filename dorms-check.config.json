@@ -1,16 +1,11 @@
 {
   "app": {
-    "name": "우리학교 부별공유",
-    "url": "https://seoulsejong-sharing.netlify.app/",
+    "name": "대전성모여자고등학교 부별공유",
+    "url": "http://localhost:3000",
     "stack": "Next.js"
   },
   "tracks": [
-    "security",
-    "edzip"
+    "security"
   ],
-  "edzipCase": "A",
-  "teacher": {
-    "dormsHandle": "cando8442"
-  },
-  "ownershipConfirmed": true
+  "ownershipConfirmed": false
 }

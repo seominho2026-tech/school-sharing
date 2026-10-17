@@ -21,8 +21,8 @@ import {
 } from "@/lib/school";
 
 const SAMPLE = `홍길동, hong
-김세종, sejong@seoulsejong.sen.hs.kr
-이서울, seoul, 교무행정부`;
+김교사, teacher@seongmohs.djsch.kr
+이교사, teacher2, 교무운영부`;
 
 export default function TeacherRoster() {
   const { user, canEdit } = useSchoolUser();

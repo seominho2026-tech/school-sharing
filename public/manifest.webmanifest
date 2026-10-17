@@ -1,7 +1,7 @@
 {
-  "name": "우리학교 부별공유",
+  "name": "대전성모여자고등학교 부별공유",
   "short_name": "부별공유",
-  "description": "서울세종고등학교 부서별 업무분장과 마감 공지",
+  "description": "대전성모여자고등학교 부서별 업무분장과 마감 공지",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

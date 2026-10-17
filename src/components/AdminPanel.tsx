@@ -85,7 +85,7 @@ export default function AdminPanel() {
           <input
             value={email}
             onChange={e => setEmail(e.target.value)}
-            placeholder="hong@seoulsejong.sen.hs.kr"
+            placeholder="hong@seongmohs.djsch.kr"
           />
         </label>
 

@@ -79,3 +79,23 @@ npm run build
 1. 변경사항을 커밋하고 사용자의 새 저장소로 푸시하세요. `main`에 푸시하면 `.github/workflows/deploy.yml`이 자동으로 GitHub Pages에 배포합니다.
 2. GitHub Pages가 아직 활성화되지 않았다면 `gh api repos/{owner}/{repo}/pages -X POST -f build_type=workflow`로 켜세요(이미 켜져 있으면 오류가 나도 무시해도 됩니다).
 3. 배포가 끝날 때까지 기다렸다가(`gh run watch`, 또는 잠시 후 `gh api repos/{owner}/{repo}/pages`로 상태 확인), 완료되면 대화의 마지막 메시지로 실제 배포된 미니홈피 주소를 사용자에게 보여주며 끝내세요. 예: "완성됐어요! 내 미니홈피 주소: https://<아이디>.github.io/<저장소이름>/"
+
+## 대전성모여자고등학교 부별공유 프로젝트
+
+이 프로젝트는 미니홈피가 아니라 부별공유입니다. 위 미니홈피 전용 질문과 배포 절차 대신 `docs/SETUP.md`를 따릅니다.
+
+- GitHub 저장소: https://github.com/seominho2026-tech/school-sharing
+- 원본(upstream): https://github.com/cando8442/school-work-links
+- 학교 이름: 대전성모여자고등학교
+- 허용 구글 도메인: seongmohs.djsch.kr
+- 최초 관리자: smt_kor03@seongmohs.djsch.kr
+- 부서 순서: src/config/departments.ts의 20개 부서. 사용자 제공 이름과 순서를 유지합니다.
+- 업무분장 및 공지 초기값: 빈 배열. 실제 내용은 학교 사용자가 화면에서 입력합니다.
+- Firebase projectId: 아직 생성 및 연결하지 않음. 다른 프로젝트를 재사용하지 않습니다.
+- Firebase 데이터베이스: 아직 없음. SETUP 안내의 서울 위치(asia-northeast3)를 사용합니다.
+- Supabase project ref: 해당 없음. 이 앱은 Firebase를 사용합니다.
+- 배포: docs/SETUP.md의 Netlify 절차를 따릅니다. 아직 배포하지 않았습니다.
+- Netlify siteId 및 공개 주소: 아직 없음.
+- Vercel projectId/orgId: 해당 없음.
+- GitHub Pages 자동 배포는 사용하지 않으며 워크플로는 수동 실행만 가능합니다.
+- 비밀값과 인증 파일을 저장소에 넣지 않습니다.

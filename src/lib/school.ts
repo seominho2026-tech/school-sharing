@@ -384,7 +384,7 @@ export async function removeTask(id: string) {
 /* ------------------------------------- */
 
 /* 이름만 적힌 줄에는 학교 도메인을 붙여 이메일을 만듭니다.
-   한 줄에 "홍길동, hong" 또는 "홍길동, hong@seoulsejong.sen.hs.kr" 처럼 적습니다. */
+   한 줄에 "홍길동, hong" 또는 "홍길동, hong@seongmohs.djsch.kr" 처럼 적습니다. */
 export function parseTeacherText(text: string): Teacher[] {
   const domain = SCHOOL_DOMAINS[0] ?? "";
   const out: Teacher[] = [];

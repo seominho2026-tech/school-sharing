@@ -236,7 +236,7 @@ function TaskForm({
           type="email"
           value={form.ownerEmail}
           onChange={e => setForm({ ...form, ownerEmail: e.target.value })}
-          placeholder="hong@seoulsejong.sen.hs.kr"
+          placeholder="hong@seongmohs.djsch.kr"
         />
       </label>
 

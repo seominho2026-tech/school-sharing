@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `${SCHOOL.name} ${SCHOOL.siteName}`,
     description: `${SCHOOL.name} 부서별 업무분장과 마감`,
-    images: [`${basePath}/assets/campus.png`]
+    images: [`${basePath}/assets/icon-512.png`]
   }
 };
 

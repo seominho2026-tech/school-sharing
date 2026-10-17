@@ -17,7 +17,7 @@ export const profile = {
   photoLabel: "사진첩",
   photoSubtitlePrefix: "사진",
   /* 오른쪽 위, 옛날 싸이월드 주소창을 흉내 낸 문구입니다. */
-  displayUrl: "https://cando8442.github.io/school-work-links/"
+  displayUrl: "https://github.com/seominho2026-tech/school-sharing"
 };
 
 /* 프로필 탭에 들어가는 소개 글입니다. 문구만 바꿔서 쓰세요. */
@@ -95,28 +95,28 @@ export type BoardPost = {
 
 export const boardPosts: BoardPost[] = [
   {
-    id: "neis-sen",
+    id: "neis-dje",
     category: "업무시스템",
-    title: "나이스(NEIS) 서울",
+    title: "나이스(NEIS) 대전",
     summary: "출결·성적·학교생활기록부 입력",
-    date: "sen.neis.go.kr",
-    href: "https://sen.neis.go.kr"
+    date: "dje.neis.go.kr",
+    href: "https://dje.neis.go.kr"
   },
   {
     id: "work-portal",
     category: "업무시스템",
-    title: "서울시교육청 업무포털",
+    title: "대전광역시교육청 업무포털",
     summary: "공문 기안과 결재, 메모보고",
-    date: "work.sen.go.kr",
-    href: "https://work.sen.go.kr"
+    date: "dje.eduptl.kr",
+    href: "https://dje.eduptl.kr"
   },
   {
     id: "klef",
     category: "업무시스템",
     title: "K-에듀파인",
     summary: "품의·정산 등 학교회계 업무",
-    date: "klef.go.kr",
-    href: "https://klef.go.kr"
+    date: "klef.dje.go.kr",
+    href: "https://klef.dje.go.kr"
   },
   {
     id: "neis-public",
@@ -129,10 +129,10 @@ export const boardPosts: BoardPost[] = [
   {
     id: "sen",
     category: "업무시스템",
-    title: "서울특별시교육청",
+    title: "대전광역시교육청",
     summary: "공지·지침·부서 안내",
-    date: "sen.go.kr",
-    href: "https://www.sen.go.kr"
+    date: "dje.go.kr",
+    href: "https://www.dje.go.kr"
   },
   {
     id: "star-moe",

@@ -1,14 +1,14 @@
 {
-  "name": "school-work-links",
+  "name": "school-sharing",
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
   "author": "cando8442",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cando8442/school-work-links.git"
+    "url": "https://github.com/seominho2026-tech/school-sharing.git"
   },
-  "homepage": "https://cando8442.github.io/school-work-links/",
+  "homepage": "https://github.com/seominho2026-tech/school-sharing",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.77",
     "firebase": "^12.17.1",
-    "next": "^16.2.10",
+    "next": "^16.4.2",
     "pdfjs-dist": "^4.10.38",
     "react": "19.1.0",
     "react-dom": "19.1.0"
@@ -29,6 +29,7 @@
     "typescript": "^5"
   },
   "overrides": {
-    "postcss": "8.5.16"
+    "postcss": "8.5.30",
+    "@grpc/grpc-js": "1.14.6"
   }
 }

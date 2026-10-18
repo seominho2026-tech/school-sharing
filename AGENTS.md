@@ -99,3 +99,10 @@ npm run build
 - Vercel projectId/orgId: 해당 없음.
 - GitHub Pages 자동 배포는 사용하지 않으며 워크플로는 수동 실행만 가능합니다.
 - 비밀값과 인증 파일을 저장소에 넣지 않습니다.
+
+## 현재 배포 방식 (이전 배포 지침보다 우선)
+- Google Sheets + Apps Script를 사용합니다. Firebase, Supabase, Netlify, Vercel 프로젝트는 생성하지 않으며 해당 ID는 없습니다.
+- 안내: docs/GOOGLE_WORKSPACE_SETUP.md. 실제 시트 ID, 스크립트 ID, 배포 URL은 아직 없습니다.
+- 공유드라이브와 폴더 ID는 Git에서 제외한 .deployment.local.json에 보관합니다.
+- Apps Script 접근은 자동 승인 검토에 차단되었습니다. 다른 접속 수단으로 우회하지 않습니다.
+- GitHub 워크플로는 코드 검사만 수행합니다.

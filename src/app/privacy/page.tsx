@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: `${SCHOOL.name} ${SCHOOL.siteName} 가 다루는 정보와 그 처리 방법을 밝힙니다.`
 };
 
-const UPDATED = "2026년 9월 6일";
+const UPDATED = "2026년 10월 18일";
 const MANAGER = `${SCHOOL.privacyManager} (${SCHOOL.ownerEmail})`;
 
 export default function PrivacyPage() {
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
           <ul className="note-list">
             <li>학교 도메인(@{SCHOOL.domain}) 계정으로 로그인한 사람만 볼 수 있습니다.</li>
             <li>
-              화면에서 감추는 데 그치지 않고, 저장소 보안 규칙이 학교 계정이 아닌 요청을 서버에서
+              화면에서 감추는 데 그치지 않고, Apps Script 서버가 학교 계정이 아닌 요청을 서버에서
               막습니다.
             </li>
             <li>모든 통신은 HTTPS 로 암호화합니다.</li>
@@ -62,8 +62,8 @@ export default function PrivacyPage() {
         <section className="duty-block">
           <h3>4. 처리 위탁</h3>
           <ul className="note-list">
-            <li>Google (Firebase 인증·데이터 저장): 로그인 확인과 업무 기록 보관</li>
-            <li>Netlify: 화면 파일 제공(호스팅)</li>
+            <li>Google Workspace (Apps Script·구글 시트·공유드라이브): 학교 계정 확인과 업무 기록 보관</li>
+            <li>Google Apps Script: 화면 제공</li>
             <li>위탁받은 곳은 맡긴 목적 밖으로 정보를 쓰지 않습니다.</li>
           </ul>
         </section>
@@ -78,7 +78,7 @@ export default function PrivacyPage() {
         <section className="duty-block">
           <h3>6. 아동 개인정보</h3>
           <p className="duty-summary">
-            이 화면은 교직원만 로그인할 수 있으며 학생은 접근할 수 없습니다. 만 14세 미만을 포함해
+            이 화면은 학교 업무용이며 학교 도메인 계정만 접근할 수 있습니다. 만 14세 미만을 포함해
             학생의 개인정보를 수집하거나 저장하지 않습니다.
           </p>
         </section>

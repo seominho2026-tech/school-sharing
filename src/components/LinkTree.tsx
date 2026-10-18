@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { isAppsScript, appUrl } from "@/lib/apps-script";
 import { asset } from "@/lib/asset";
 import Calendar from "@/components/Calendar";
 import AdminPanel from "@/components/AdminPanel";
@@ -729,7 +730,7 @@ export default function LinkTree() {
 
   /* 바탕화면 앱으로 설치되게 하는 서비스워커입니다. */
   useEffect(() => {
-    if (!("serviceWorker" in navigator)) return;
+    if (isAppsScript() || !("serviceWorker" in navigator)) return;
     const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
     navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` }).catch(() => {
       /* 등록에 실패해도 사이트는 그대로 씁니다. */
@@ -787,7 +788,7 @@ export default function LinkTree() {
         </p>
         <p className="ft-warn">학생 개인정보와 대외비 문서는 이 사이트에 직접 적지 않습니다.</p>
         <p className="ft-links">
-          <a href="./privacy/">개인정보처리방침</a>
+          <a href={appUrl("privacy")} target="_top">개인정보처리방침</a>
           {SCHOOL.dormsUrl ? (
             <>
               {" · "}

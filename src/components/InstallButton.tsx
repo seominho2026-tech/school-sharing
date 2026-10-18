@@ -10,6 +10,7 @@
    받는 즉시 이름을 "....download" 로 바꿔 버립니다. 그래서 두 번 눌러도 아무 일이 없었습니다.
    지금은 막히지 않는 html 바로가기 파일을 내려줍니다. */
 
+import { appUrl, isAppsScript } from "@/lib/apps-script";
 import { useEffect, useState } from "react";
 
 type InstallPrompt = Event & {
@@ -75,7 +76,7 @@ export default function InstallButton() {
   }, []);
 
   const downloadShortcut = () => {
-    const url = window.location.origin + window.location.pathname;
+    const url = isAppsScript() ? appUrl() : window.location.origin + window.location.pathname;
     const body = `<!doctype html>
 <html lang="ko">
 <head>

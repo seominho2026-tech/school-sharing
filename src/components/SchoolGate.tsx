@@ -1,13 +1,10 @@
 "use client";
 
-/* 학교 구글 계정으로 로그인한 사람에게만 화면을 보여 주는 문지기입니다.
-
-   로그인은 파이어베이스 구글 로그인을 씁니다. 로그인해야 업무 기록과 제출 표시를 할 수 있고,
-   Firestore 규칙이 학교 도메인 계정만 읽고 쓰게 막습니다.
-   파이어베이스 설정이 없으면 문지기 없이 읽기 전용으로 열립니다. */
+/* 학교 계정을 Apps Script 서버에서 확인합니다. 로컬 미리보기에서는 저장하지 않습니다. */
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { SCHOOL } from "@/config/school";
+import { isAppsScript, appUrl } from "@/lib/apps-script";
 import InstallButton from "@/components/InstallButton";
 import {
   OWNER_EMAIL,
@@ -17,6 +14,7 @@ import {
   signOutSchool,
   watchMyRole,
   watchUser,
+  watchConnectionError,
   type Admin,
   type SchoolUser
 } from "@/lib/school";
@@ -48,22 +46,25 @@ export default function SchoolGate({ children }: { children: React.ReactNode }) 
   const [user, setUser] = useState<SchoolUser | null>(null);
   const [role, setRole] = useState<Admin | null>(null);
   const [checked, setChecked] = useState(!isSchoolLoginEnabled);
+  const [preview, setPreview] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   /* 바탕화면 앱으로 설치되게 하는 서비스워커입니다. 로그인 전에도 등록해 둡니다. */
   useEffect(() => {
-    if (!("serviceWorker" in navigator)) return;
+    if (isAppsScript() || !("serviceWorker" in navigator)) return;
     const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
     navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` }).catch(() => {});
   }, []);
 
   useEffect(() => {
     if (!isSchoolLoginEnabled) return;
-    return watchUser(next => {
+    const unError = watchConnectionError(setError);
+    const unUser = watchUser(next => {
       setUser(next);
       setChecked(true);
     });
+    return () => { unError(); unUser(); };
   }, []);
 
   /* 로그인한 사람의 편집 권한을 지켜봅니다. */
@@ -93,8 +94,8 @@ export default function SchoolGate({ children }: { children: React.ReactNode }) 
     }
   };
 
-  /* 설정 전에는 누구나 읽을 수 있는 상태로 둡니다. */
-  if (!isSchoolLoginEnabled) {
+  /* 로컬에서는 명시적으로 선택한 읽기 전용 미리보기만 제공합니다. */
+  if (preview && !isAppsScript()) {
     return <SchoolUserContext.Provider value={value}>{children}</SchoolUserContext.Provider>;
   }
 
@@ -133,10 +134,11 @@ export default function SchoolGate({ children }: { children: React.ReactNode }) 
         <button type="button" className="sg-login" onClick={login} disabled={busy}>
           {busy ? "로그인 중" : "학교 구글 계정으로 로그인"}
         </button>
-        {error ? <p className="sg-error">{error}</p> : null}
-        <p className="sg-note">여러 계정에 로그인되어 있으면 학교 계정을 골라 주세요.</p>
+        {error ? <p className="sg-error" role="alert">{error}</p> : null}
+        {!isAppsScript() ? <p className="sg-note">이 주소는 저장되지 않는 미리보기입니다. <button type="button" onClick={() => setPreview(true)}>화면 미리보기</button></p> : null}
+        <p className="sg-note">여러 계정에 로그인되어 있으면 학교 계정을 골라 주세요. 로그아웃은 이 앱의 연결을 닫으며 구글 계정 자체에서는 로그아웃되지 않습니다.</p>
         <p className="sg-note">
-          <a className="dl-edit" href="./privacy/">
+          <a className="dl-edit" href={appUrl("privacy")} target="_top">
             개인정보처리방침
           </a>
         </p>

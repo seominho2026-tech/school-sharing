@@ -17,3 +17,12 @@ tsconfig.tsbuildinfo
 .netlify/
 .firebase/
 *-debug.log
+
+.clasp.json
+.clasprc.json
+apps-script/Index.html
+apps-script/Privacy.html
+apps-script/Config.gs
+artifacts/
+
+.deployment.local.json

@@ -180,6 +180,7 @@ function TaskForm({
       : { ...EMPTY, deptId, ownerName: user?.name ?? "", ownerEmail: user?.email ?? "" }
   );
   const [targetText, setTargetText] = useState(initial ? initial.targets.join(", ") : "");
+  const [editVersion] = useState(initial?.version);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -198,7 +199,7 @@ function TaskForm({
         .filter(Boolean)
     };
     try {
-      if (editingId) await updateTask(editingId, payload, user);
+      if (editingId) await updateTask(editingId, payload, user, editVersion);
       else await addTask(payload, user);
       onClose();
     } catch (err) {
@@ -454,7 +455,7 @@ export default function TaskBoard({ deptId }: { deptId?: string }) {
   if (!isSchoolLoginEnabled) {
     return (
       <div className="dl-empty">
-        제출 현황을 쓰려면 파이어베이스 설정이 필요합니다. README 의 안내를 따라 한 번만 설정하면 됩니다.
+        공유 저장은 학교 Apps Script 주소에서 사용할 수 있습니다.
       </div>
     );
   }

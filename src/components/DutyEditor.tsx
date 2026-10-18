@@ -37,6 +37,7 @@ function DutyForm({
   onClose: () => void;
 }) {
   const { user } = useSchoolUser();
+  const [editVersion] = useState(initial?.version);
   const [form, setForm] = useState<DutyInput>(
     initial
       ? {
@@ -67,7 +68,7 @@ function DutyForm({
     setBusy(true);
     setError(null);
     try {
-      if (editingId) await updateDuty(editingId, { ...form, deptId }, user);
+      if (editingId) await updateDuty(editingId, { ...form, deptId }, user, editVersion);
       else await addDuty({ ...form, deptId }, user);
       onClose();
     } catch (err) {

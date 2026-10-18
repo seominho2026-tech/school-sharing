@@ -5,5 +5,6 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export function asset(path: string) {
   if (/^(https?:)?\/\//.test(path) || path.startsWith("data:")) return path;
+  if (typeof window !== "undefined" && window.__SCHOOL_ASSETS__?.[path]) return window.__SCHOOL_ASSETS__[path];
   return `${basePath}${path}`;
 }

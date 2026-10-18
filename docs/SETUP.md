@@ -1,3 +1,5 @@
+> 현재 학교 버전은 Firebase 대신 Google Sheets + Apps Script를 사용합니다. docs/GOOGLE_WORKSPACE_SETUP.md의 안내가 우선하며 실제 학교 계정 배포는 아직 완료되지 않았습니다.
+
 # 우리 학교 부별공유 만들기
 
 ## 사람이 할 일 (딱 한 줄)

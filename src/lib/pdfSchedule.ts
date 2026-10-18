@@ -24,7 +24,7 @@ function yearFor(month: number, schoolYear: number) {
 export async function readPdf(file: File): Promise<PdfPage[]> {
   const pdfjs = await import("pdfjs-dist");
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  pdfjs.GlobalWorkerOptions.workerSrc = `${base}/pdf.worker.min.mjs`;
+  pdfjs.GlobalWorkerOptions.workerSrc = window.__PDF_WORKER__ || `${base}/pdf.worker.min.mjs`;
 
   const buffer = await file.arrayBuffer();
   const doc = await pdfjs.getDocument({ data: buffer }).promise;

@@ -11,7 +11,9 @@ function configModule(source) {
 }
 const school = configModule(await fs.readFile('src/config/school.ts','utf8')).SCHOOL;
 const departments = configModule(await fs.readFile('src/config/departments.ts','utf8')).departments;
-const result = await build({entryPoints:['src/apps-script-entry.tsx'],bundle:true,write:false,minify:true,format:'iife',target:'es2022',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"','process.env.NEXT_PUBLIC_BASE_PATH':'""','process.env.NEXT_PUBLIC_SCHOOL_DOMAIN':JSON.stringify(school.domain)}});
+// HtmlService can treat // inside a template literal as a comment and drop the
+// rest of the line. Avoid both authored and minifier-generated template literals.
+const result = await build({entryPoints:['src/apps-script-entry.tsx'],bundle:true,write:false,minify:true,format:'iife',target:'es2022',supported:{'template-literal':false},jsx:'automatic',define:{'process.env.NODE_ENV':'"production"','process.env.NEXT_PUBLIC_BASE_PATH':'""','process.env.NEXT_PUBLIC_SCHOOL_DOMAIN':JSON.stringify(school.domain)}});
 const js = result.outputFiles[0].text.replace(/<\/script/gi,'<\\/script');
 const css = (await fs.readFile('src/app/globals.css','utf8')).replace(/<\/style/gi,'');
 const assets = {};
